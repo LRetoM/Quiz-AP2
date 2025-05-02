@@ -220,15 +220,17 @@ export default function App() {
 
   // Navigation
   const next = () => {
+    setFlipped(false);     // <<< wichtig: zuerst zurücksetzen!
+    setSelected(null);     // <<< vorherige Auswahl zurücksetzen
     if (idx < queue.length - 1) {
-      setIdx(i => i + 1);
-      setSelected(null);
-      setFlipped(false);
-      setAnsweredQuestion(null); // **Clear**
+      setTimeout(() => {
+        setIdx(i => i + 1);
+      }, 10); // kleiner Delay, damit Flip zurückgeht
     } else {
       setStage('result');
     }
   };
+  
   const prev = () => {
     if (idx > 0) {
       setIdx(i => i - 1);
