@@ -308,10 +308,17 @@ export default function App() {
                 </div>
               </div>
               {/* Rückseite */}
-              <div style={{ ...styles.card, ...styles.cardBack }}>
-                <strong>Erklärung:</strong>
-                <p>{answeredQuestion?.explanation}</p>
-              </div>
+              <div
+  style={{
+    ...styles.card,
+    ...styles.cardBack,
+    backgroundColor:
+      selected === queue[idx].correctIndex ? '#81c784' /* hellgrün */ : '#e57373' /* hellrot */
+  }}
+>
+  <strong>Erklärung:</strong>
+  <p>{answeredQuestion?.explanation}</p>
+</div>
             </div>
           </div>
 
