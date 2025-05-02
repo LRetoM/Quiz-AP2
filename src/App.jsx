@@ -16,8 +16,6 @@ const quizInfos = [
   { key: 'pruefung3', label: 'Wirtschafts- und Sozialkunde (WiSo)' }
 ];
 
-
-
 // —————— Styles ——————
 const styles = {
   container: {
@@ -81,12 +79,41 @@ const styles = {
     cursor: 'pointer',
     fontSize: '1rem'
   },
-  result: { textAlign: 'center' }
+  result: { textAlign: 'center' },
+
+  // — neu für Flip & Score —
+  scoreDisplay: {
+    fontSize: '1rem',
+    marginBottom: '0.5rem',
+    textAlign: 'center'
+  },
+  cardWrapper: {
+    perspective: '1000px',
+    marginBottom: '1rem'
+  },
+  cardInner: {
+    transformStyle: 'preserve-3d',
+    transition: 'transform 0.6s'
+  },
+  cardFlipped: {
+    transform: 'rotateY(180deg)'
+  },
+  cardFront: {
+    backfaceVisibility: 'hidden'
+  },
+  cardBack: {
+    backfaceVisibility: 'hidden',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    transform: 'rotateY(180deg)'
+  }
 };
 
 // —————— OptionButton Component ——————
 function OptionButton({ children, onClick, disabled, state }) {
-  // state: 'default' | 'correct' | 'wrong'
   const base = {
     padding: '1rem',
     borderRadius: '6px',
@@ -99,11 +126,8 @@ function OptionButton({ children, onClick, disabled, state }) {
     background: '#fafafa'
   };
   let style = { ...base };
-  if (state === 'correct') {
-    style = { ...style, background: '#e8f5e9', borderColor: '#4caf50' };
-  } else if (state === 'wrong') {
-    style = { ...style, background: '#ffebee', borderColor: '#e53935' };
-  }
+  if (state === 'correct') style = { ...style, background: '#e8f5e9', borderColor: '#4caf50' };
+  if (state === 'wrong')   style = { ...style, background: '#ffebee', borderColor: '#e53935' };
 
   return (
     <button
@@ -160,8 +184,7 @@ export default function App() {
   // Start Quiz
   const startQuiz = key => {
     setExamKey(key);
-    const list = shuffle(questionPools[key]);
-    setQueue(list);
+    setQueue(shuffle(questionPools[key]));
     setIdx(0);
     setScore(0);
     setSelected(null);
@@ -170,10 +193,9 @@ export default function App() {
   };
 
   const handleAnswer = correct => {
-    if (correct) {
-      setScore(s => s + 1);
-    } else {
-      // reinsert wrong question at random later
+    if (correct) setScore(s => s + 1);
+    else {
+      // reinserieren bei falsch
       setQueue(q => {
         const copy = [...q];
         const missed = copy.splice(idx, 1)[0];
@@ -201,80 +223,90 @@ export default function App() {
     }
   };
 
-  // UI
+  // —————— UI ——————
   return (
     <div style={styles.container}>
+      {/* — MENU — */}
       {stage === 'menu' && (
         <div style={styles.card}>
           <h1 style={styles.title}>AP2 Quiz</h1>
           {quizInfos.map(({ key, label }) => (
-  <button
-  key={key}
-  style={styles.menuButton}
-  onClick={() => startQuiz(key)}
->
-    {label} {highscores[key] != null && `(Highscore: ${highscores[key]})`}
-  </button>
-))}
-
-
-
+            <button
+              key={key}
+              style={styles.menuButton}
+              onClick={() => startQuiz(key)}
+            >
+              {label} {highscores[key] != null && `(Highscore: ${highscores[key]})`}
+            </button>
+          ))}
         </div>
       )}
 
+      {/* — QUIZ — */}
       {stage === 'quiz' && (
         <div style={styles.quizWrapper}>
-          {/* Progress */}
+          {/* Fortschrittsbalken */}
           <div style={styles.progressBarContainer}>
             <div
               style={styles.progressBar(((idx + 1) / queue.length) * 100)}
             />
           </div>
+          {/* Score */}
+          <div style={styles.scoreDisplay}>Score: {score}</div>
 
-          {/* Question Card */}
-          <div style={styles.card}>
-            <div style={styles.question}>{queue[idx].question}</div>
-            <div style={styles.optionsGrid}>
-              {queue[idx].options.map((opt, i) => (
-                <OptionButton
-                  key={i}
-                  onClick={() => {
-                    if (selected === null) {
-                      setSelected(i);
-                      handleAnswer(i === queue[idx].correctIndex);
-                      setFlipped(true);
+          {/* Karte mit Flip */}
+          <div style={styles.cardWrapper}>
+            <div
+              style={{
+                ...styles.cardInner,
+                ...(flipped ? styles.cardFlipped : {})
+              }}
+            >
+              {/* Vorderseite */}
+              <div style={{ ...styles.card, ...styles.cardFront }}>
+                <div style={styles.question}>{queue[idx].question}</div>
+                <div style={styles.optionsGrid}>
+                  {queue[idx].options.map((opt, i) => {
+                    const isCorrect = i === queue[idx].correctIndex;
+                    let state = 'default';
+                    if (selected !== null) {
+                      state = isCorrect ? 'correct' : i === selected ? 'wrong' : 'default';
                     }
-                  }}
-                  disabled={selected !== null}
-                  state={
-                    selected === null
-                      ? 'default'
-                      : i === queue[idx].correctIndex
-                      ? 'correct'
-                      : i === selected
-                      ? 'wrong'
-                      : 'default'
-                  }
-                >
-                  {opt}
-                </OptionButton>
-              ))}
-            </div>
-            {/* Explanation on Back */}
-            {flipped && (
-              <div style={{ marginTop: '1rem', padding: '1rem', background: '#e3f2fd', borderRadius: '6px' }}>
-                <strong>Erklärung:</strong>
-                <p>{queue[idx].explanation}</p>
-                {/* Beispiel-Grafik */}
-                <div style={{ textAlign: 'center' }}>
-                  <img
-                    src={`https://via.placeholder.com/200x100?text=Beispiel+für+Frage+${idx + 1}`}
-                    alt="Beispiel-Grafik"
-                    style={{ maxWidth: '100%', borderRadius: '4px' }}
-                  />
+                    return (
+                      <OptionButton
+                        key={i}
+                        onClick={() => {
+                          if (selected === null) {
+                            setSelected(i);
+                            handleAnswer(isCorrect);
+                            setFlipped(true);
+                          }
+                        }}
+                        disabled={selected !== null}
+                        state={state}
+                      >
+                        {opt}
+                      </OptionButton>
+                    );
+                  })}
                 </div>
               </div>
-            )}
+
+              {/* Rückseite */}
+              <div style={{ ...styles.card, ...styles.cardBack }}>
+                <strong>Erklärung:</strong>
+                <p>{queue[idx].explanation}</p>
+                {queue[idx].imageUrl && (
+                  <div style={{ textAlign: 'center', marginTop: '1rem' }}>
+                    <img
+                      src={queue[idx].imageUrl}
+                      alt="Beispiel"
+                      style={{ maxWidth: '100%', borderRadius: '4px' }}
+                    />
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
 
           {/* Navigation */}
@@ -293,6 +325,7 @@ export default function App() {
         </div>
       )}
 
+      {/* — RESULT — */}
       {stage === 'result' && (
         <div style={styles.card}>
           <h2 style={styles.title}>Ergebnis</h2>
