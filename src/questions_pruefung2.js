@@ -574,6 +574,556 @@ export default [
       correctIndex: 0,
       explanation:
         "Greedy ist geeignet, wenn lokale Wahl zu global optimal führt (z. B. Minimal-Spanning-Tree)."
-    }
+    },
+    {
+        question: "51. Was bedeutet die Notation O(n) in der Algorithmusanalyse?",
+        options: [
+          "Konstante Laufzeit",
+          "Lineare Laufzeit in Abhängigkeit von n",
+          "Quadratische Laufzeit",
+          "Logarithmische Laufzeit"
+        ],
+        correctIndex: 1,
+        explanation: "O(n) beschreibt eine lineare Laufzeit: Die benötigte Zeit wächst proportional zur Eingangsgröße n."
+      },
+      {
+        question: "52. Welcher Sortieralgorithmus hat im Durchschnitt O(n·log n)-Laufzeit?",
+        options: [
+          "Bubble Sort",
+          "Insertion Sort",
+          "Merge Sort",
+          "Selection Sort"
+        ],
+        correctIndex: 2,
+        explanation: "Merge Sort teilt das Feld rekursiv und fügt dann in O(n) zusammen – insgesamt O(n·log n)."
+      },
+      {
+        question: "53. Welcher Algorithmus ist stabil?",
+        options: [
+          "Selection Sort",
+          "Merge Sort",
+          "Quick Sort (Lomuto-Partition)",
+          "Heap Sort"
+        ],
+        correctIndex: 1,
+        explanation: "Merge Sort ist stabil, da gleiche Elemente ihre relative Reihenfolge behalten."
+      },
+      {
+        question: "54. Welche Voraussetzung muss für Binary Search (binäre Suche) erfüllt sein?",
+        options: [
+          "Die Liste muss zyklisch sein",
+          "Die Liste muss vorher sortiert sein",
+          "Die Liste muss nur aus Integern bestehen",
+          "Die Liste darf keine Duplikate enthalten"
+        ],
+        correctIndex: 1,
+        explanation: "Binary Search setzt eine aufsteigend sortierte Liste voraus, um den Suchbereich halbieren zu können."
+      },
+      {
+        question: "55. Was ist der Worst-Case von Bubble Sort?",
+        options: [
+          "O(n)",
+          "O(n·log n)",
+          "O(n²)",
+          "O(log n)"
+        ],
+        correctIndex: 2,
+        explanation: "Im schlechtesten Fall (absteigend sortiertes Feld) braucht Bubble Sort O(n²) Vergleiche und Vertauschungen."
+      },
+      {
+        question: "56. Wie viele Vergleiche braucht Linear Search (lineare Suche) im Durchschnitt?",
+        options: [
+          "O(1)",
+          "O(n/2)",
+          "O(n·log n)",
+          "O(n²)"
+        ],
+        correctIndex: 1,
+        explanation: "Im Durchschnitt wird etwa die Hälfte der Liste durchsucht: O(n/2) = O(n)."
+      },
+      {
+        question: "57. Was beschreibt ‚in-place‘ bei einem Algorithmus?",
+        options: [
+          "Verwendung zusätzlicher Datenstrukturen",
+          "Keine zusätzlichen Datenstrukturen außer O(1) Speicher",
+          "Always recursive",
+          "Nur iterativ implementierbar"
+        ],
+        correctIndex: 1,
+        explanation: "In-place bedeutet, dass nur konstanter Zusatzspeicher (O(1)) verwendet wird, Daten werden im Originalfeld umsortiert."
+      },
+      {
+        question: "58. Welche Datenstruktur eignet sich für LIFO-Zugriff?",
+        options: [
+          "Queue",
+          "Stack",
+          "Hashmap",
+          "Binary Tree"
+        ],
+        correctIndex: 1,
+        explanation: "Ein Stack (Stapel) erlaubt Last-In–First-Out: Elemente werden in umgekehrter Einfügereihenfolge entnommen."
+      },
+      {
+        question: "59. Was ist das ‚Divide and Conquer‘-Prinzip?",
+        options: [
+          "Iteration über das gesamte Feld",
+          "Rekursive Teilung des Problems und Zusammenführen der Teillösungen",
+          "Greedy-Algorithmus",
+          "Dynamische Speicherzuweisung"
+        ],
+        correctIndex: 1,
+        explanation: "Divide and Conquer teilt das Problem rekursiv in Teilprobleme, löst diese und kombiniert die Ergebnisse."
+      },
+      {
+        question: "60. Was beschreibt ein Tail-Call in der Rekursion?",
+        options: [
+          "Letzte Anweisung einer Funktion ist rekursiver Aufruf",
+          "Rekursiver Aufruf in einer Schleife",
+          "Nutzung von Tail-Recursion-Optimierung",
+          "Mutual Recursion"
+        ],
+        correctIndex: 0,
+        explanation: "Ein Tail-Call ist ein rekursiver Aufruf als letzte Aktion, oft optimierbar zu Iteration (Tail-Call-Optimization)."
+      },
+      {
+        question: "61. Wie lautet die durchschnittliche Laufzeit von Quick Sort?",
+        options: [
+          "O(n)",
+          "O(n·log n)",
+          "O(n²)",
+          "O(log n)"
+        ],
+        correctIndex: 1,
+        explanation: "Im Durchschnitt wählt Quick Sort gute Pivots und läuft in O(n·log n). Worst-Case ist O(n²)."
+      },
+      {
+        question: "62. Welches Prinzip nutzt Dynamic Programming?",
+        options: [
+          "Greedy Choices",
+          "Memoization und Teilprobleme wiederverwenden",
+          "Zufällige Auswahl",
+          "Backtracking"
+        ],
+        correctIndex: 1,
+        explanation: "Dynamic Programming speichert Teillösungen (Memoization) und vermeidet so erneute Berechnungen."
+      },
+      {
+        question: "63. Welche Suchalgorithmus-Art ist BFS?",
+        options: [
+          "Depth-First Search",
+          "Breadth-First Search",
+          "Binary Search",
+          "Greedy Search"
+        ],
+        correctIndex: 1,
+        explanation: "Breadth-First Search durchsucht schichtweise nach Entfernung zur Startnode (Queue-basiert)."
+      },
+      {
+        question: "64. Was ist der Unterschied zwischen DFS und BFS?",
+        options: [
+          "DFS verwendet Queue, BFS Stack",
+          "DFS vollzieht Tiefenexploration, BFS Ebenenexploration",
+          "DFS ist immer schneller",
+          "BFS ist immer in-place"
+        ],
+        correctIndex: 1,
+        explanation: "DFS geht so tief wie möglich (Stack/Rekursion), BFS erkundet zuerst alle Nachbarn einer Knotenebene."
+      },
+      {
+        question: "65. Warum ist Hashing im Durchschnitt O(1)?",
+        options: [
+          "Weil alle Einträge sortiert sind",
+          "Weil Zugriffe direkt über den Hash-Index erfolgen",
+          "Weil es keinen Speicherbedarf gibt",
+          "Weil nur kleine Datenmengen erlaubt sind"
+        ],
+        correctIndex: 1,
+        explanation: "Durch eine Hashfunktion wird der Index direkt berechnet, sodass Insert/Lookup im Durchschnitt konstant sind."
+      },
+      {
+        question: "66. Was passiert bei einer Hash-Collision?",
+        options: [
+          "Eintrag wird überschrieben",
+          "Beide Elemente werden gelöscht",
+          "Man nutzt Chaining oder Open Addressing zur Konfliktlösung",
+          "Das Programm stürzt ab"
+        ],
+        correctIndex: 2,
+        explanation: "Kollisionen werden z. B. per Chaining (Liste pro Bucket) oder Open Addressing (Sondierung) behandelt."
+      },
+      {
+        question: "67. Welche Komplexität hat ein verschachtelter Doppel-Loop (z.B. for i=0..n, for j=0..n)?",
+        options: [
+          "O(n)",
+          "O(n·log n)",
+          "O(n²)",
+          "O(log n)"
+        ],
+        correctIndex: 2,
+        explanation: "Zwei Schleifen über n verschachtelt führen zu O(n²) Laufzeit."
+      },
+      {
+        question: "68. Wie kann man die Laufzeit von O(n²) auf O(n·log n) bringen?",
+        options: [
+          "Indem man Bubble Sort verwendet",
+          "Indem man Merge- oder Quick Sort einsetzt",
+          "Indem man Listen verdoppelt",
+          "Indem man rekursiv ohne Basisfall arbeitet"
+        ],
+        correctIndex: 1,
+        explanation: "Merge Sort und Quick Sort haben durchschnittlich O(n·log n), statt O(n²) wie einfache Sortiermethoden."
+      },
+      {
+        question: "69. Was ist der Speicherbedarf (Space Complexity) von Merge Sort?",
+        options: [
+          "O(1)",
+          "O(n)",
+          "O(log n)",
+          "O(n²)"
+        ],
+        correctIndex: 1,
+        explanation: "Merge Sort benötigt zusätzliche Felder gleicher Größe wie das Eingangsfeld: O(n)."
+      },
+      {
+        question: "70. Wie implementiert man eine rekursive Faktorfunktion korrekt?",
+        options: [
+          "Ohne Abbruchbedingung",
+          "Mit Basisfall n == 0 und Rekursion für n·fakt(n–1)",
+          "Nur mit while-Schleife",
+          "Mit dynamischer Programmierung"
+        ],
+        correctIndex: 1,
+        explanation: "Ein Basisfall (n == 0 → 1) verhindert unendliche Rekursion; sonst aufruf fakt(n–1)."
+      },
+      {
+        question: "71. Welche Ausgabe erzeugt der Pseudocode: sum=0; for i=1 to n: sum += i?",
+        options: [
+          "n",
+          "n·(n+1)/2",
+          "n²",
+          "n!"
+        ],
+        correctIndex: 1,
+        explanation: "Die Schleife summiert 1…n, Ergebnis ist die Dreieckszahl n·(n+1)/2."
+      },
+      {
+        question: "72. Wie bezeichnet man eine Funktion ohne Seiteneffekte?",
+        options: [
+          "Imperativ",
+          "Rein (pure)",
+          "Rekursiv",
+          "Iterativ"
+        ],
+        correctIndex: 1,
+        explanation: "Pure Functions haben keine Seiteneffekte und liefern immer dasselbe Ergebnis bei gleichen Eingaben."
+      },
+      {
+        question: "73. Wie lauten die Traversierungsarten eines binären Baums?",
+        options: [
+          "Pre-, In-, Post-Order",
+          "Left-Right-Width",
+          "Breadth-Stack",
+          "Up-Down-Level"
+        ],
+        correctIndex: 0,
+        explanation: "Bei Pre-/In-/Post-Order wird Node, Links, Rechts bzw. Verschiedene Reihenfolgen besucht."
+      },
+      {
+        question: "74. Welcher Algorithmus eignet sich für kürzeste Wege in ungewichteten Graphen?",
+        options: [
+          "Dijkstra",
+          "Bellman-Ford",
+          "Breadth-First Search",
+          "Depth-First Search"
+        ],
+        correctIndex: 2,
+        explanation: "BFS findet in ungewichteten Graphen kürzeste Pfade in O(V+E)-Zeit."
+      },
+      {
+        question: "75. Was ist Amortisierte Analyse?",
+        options: [
+          "Worst-Case Analyse",
+          "Betrachtung der durchschnittlichen Kosten über viele Operationen",
+          "Only constant time",
+          "Nur für rekursive Algorithmen"
+        ],
+        correctIndex: 1,
+        explanation: "Amortisierte Analyse verteilt teure Operationen auf viele Operationen, z.B. dynamisches Array-Resize."
+      },
+      {
+        question: "76. Wie funktioniert ein dynamisches Array beim Hinzufügen?",
+        options: [
+          "Es passt sich automatisch an und verdoppelt bei voller Kapazität",
+          "Es wird nie vergrößert",
+          "Es löscht alte Einträge",
+          "Es verwendet LinkedList intern"
+        ],
+        correctIndex: 0,
+        explanation: "Dynamische Arrays verdoppeln typischerweise ihre Kapazität, wenn sie voll sind – amortisierte O(1)-Insert."
+      },
+      {
+        question: "77. Welcher Algorithmus nutzt Priority Queue?",
+        options: [
+          "Heap Sort",
+          "Merge Sort",
+          "Bubble Sort",
+          "Insertion Sort"
+        ],
+        correctIndex: 0,
+        explanation: "Heap Sort basiert auf einem Heap (Priority Queue), um das größte/kleinste Element zu extrahieren."
+      },
+      {
+        question: "78. Was macht ein ‚Greedy‘-Algorithmus?",
+        options: [
+          "Wählt in jedem Schritt die lokal beste Option",
+          "Löst das Problem global optimal",
+          "Verwendet immer Rekursion",
+          "Macht Backtracking"
+        ],
+        correctIndex: 0,
+        explanation: "Greedy-Ansätze treffen lokale Entscheidungen ohne Zurückspringen, z.B. Auswahl von nächstbester Münze."
+      },
+      {
+        question: "79. Wann ist Greedy nicht optimal?",
+        options: [
+          "Bei kanonischem Münzwechsel",
+          "Bei generellen Münzsystemen ohne kanonische Struktur",
+          "Bei schnellen Algorithmen",
+          "Immer optimal"
+        ],
+        correctIndex: 1,
+        explanation: "Ohne kanonisches System kann Greedy suboptimal sein; man benötigt DP für global optimale Lösung."
+      },
+      {
+        question: "80. Wie unterscheidet sich ‚Backtracking‘ von ‚Divide and Conquer‘?",
+        options: [
+          "Backtracking probiert Pfade und verwirft sie bei Fehlschlag",
+          "Backtracking teilt Probleme auf",
+          "Beides identisch",
+          "Divide and Conquer nutzt Greedy"
+        ],
+        correctIndex: 0,
+        explanation: "Backtracking erkundet systematisch Möglichkeiten und verwirft unpassende (z. B. N-Queens)."
+      },
+      {
+        question: "81. Welche Komplexität hat Fibonacci-Rekursion ohne Memoization?",
+        options: [
+          "O(n)",
+          "O(2ⁿ)",
+          "O(n·log n)",
+          "O(n²)"
+        ],
+        correctIndex: 1,
+        explanation: "Die naive Fibonacci-Rekursion ruft sich doppelt auf und wächst exponentiell: O(2ⁿ)."
+      },
+      {
+        question: "82. Wie verringert man die Exponentialzeit bei Fibonacci auf O(n)?",
+        options: [
+          "Durch Memoization oder Iteration",
+          "Durch Erhöhung der Rekursionstiefe",
+          "Durch Randomisierung",
+          "Durch Greedy"
+        ],
+        correctIndex: 0,
+        explanation: "Memoization oder eine einfache Schleife speichert Teilergebnisse und erreicht lineare Laufzeit."
+      },
+      {
+        question: "83. Was ist ein ‚Struktogramm‘?",
+        options: [
+          "Ein UML-Diagramm",
+          "Ein grafisches Programmablaufdiagramm",
+          "Ein Datenmodell",
+          "Ein Use-Case-Diagramm"
+        ],
+        correctIndex: 1,
+        explanation: "Struktogramme (Nassi–Shneiderman) stellen Programmabläufe in Kästchenblockform dar."
+      },
+      {
+        question: "84. Welche Schleifenstruktur gibt es in Pseudocode typischerweise?",
+        options: [
+          "for, while, repeat-until",
+          "do-while only",
+          "foreach only",
+          "switch-case"
+        ],
+        correctIndex: 0,
+        explanation: "Pseudocode nutzt for-Schleifen, while- und repeat-until-Loops, um Iterationen zu beschreiben."
+      },
+      {
+        question: "85. Was beschreibt ‚Heapify‘?",
+        options: [
+          "Den Aufbau eines Heaps aus einem Array",
+          "Die Verdopplung eines Arrays",
+          "Die Suche im Heap",
+          "Das Sortieren mit Bubble Sort"
+        ],
+        correctIndex: 0,
+        explanation: "Heapify transformiert ein Array in einen gültigen Heap (O(n)-Algorithmus)."
+      },
+      {
+        question: "86. Welche Aussage ist richtig zu Pivot-Wahl in Quick Sort?",
+        options: [
+          "Immer das erste Element wählen",
+          "Idealerweise median-of-three wählen, um Worst-Case zu vermeiden",
+          "Niemals das letzte wählen",
+          "Pivot muss immer zufällig sein"
+        ],
+        correctIndex: 1,
+        explanation: "Median-of-three (erstes, mittleres, letztes Element) minimiert ungünstige Partitionen."
+      },
+      {
+        question: "87. Was macht eine ‚Stable Sort‘-Eigenschaft aus?",
+        options: [
+          "Erhält relative Reihenfolge gleicher Elemente",
+          "Sortiert in-place",
+          "Verwendet O(1)-Zusatzspeicher",
+          "Ist immer schneller"
+        ],
+        correctIndex: 0,
+        explanation: "Stable Sorts wie Merge Sort behalten die Reihenfolge gleicher Schlüssel bei."
+      },
+      {
+        question: "88. Welcher Algorithmus ist nicht-stabil, aber in-place?",
+        options: [
+          "Insertion Sort",
+          "Merge Sort",
+          "Heap Sort",
+          "Bubble Sort"
+        ],
+        correctIndex: 2,
+        explanation: "Heap Sort ist in-place, aber nicht stabil: gleiche Elemente können ihre Reihenfolge verlieren."
+      },
+      {
+        question: "89. Wie funktioniert eine Tiefensuche (DFS) iterativ?",
+        options: [
+          "Mit einer Queue",
+          "Mit einem Stack",
+          "Mit Rekursion ausschließlich",
+          "Mit Hashmaps"
+        ],
+        correctIndex: 1,
+        explanation: "DFS kann rekursiv oder mit eigenem Stack implementiert werden, um Knoten tief zu erkunden."
+      },
+      {
+        question: "90. Was ist ‚Backtracking‘ bei Graphenproblemen?",
+        options: [
+          "Wegsuche und Zurückgehen bei Sackgassen",
+          "Sortieren von Knoten",
+          "Greedy-Pfadwahl",
+          "Speichern aller Pfade"
+        ],
+        correctIndex: 0,
+        explanation: "Backtracking probiert Pfade aus, geht bei Fehlschlag zurück und sucht alternative Wege."
+      },
+      {
+        question: "91. Warum ist O(log n) schneller als O(n)?",
+        options: [
+          "Weil logarithmische Algorithmen mehr Loops verwenden",
+          "Weil log n langsamer ist",
+          "Weil Suchbereich exponentiell schrumpft",
+          "Weil n immer kleiner ist"
+        ],
+        correctIndex: 2,
+        explanation: "Algorithmen wie Binary Search halbieren den Suchbereich in jedem Schritt → logarithmische Laufzeit."
+      },
+      {
+        question: "92. In welchem Fall ist Quick Sort O(n²)?",
+        options: [
+          "Wenn das Array leer ist",
+          "Wenn Pivot stets schlechtes Partitionsergebnis liefert (z. B. größtes/kleinstes Element)",
+          "Wenn Merge Sort verwendet wird",
+          "Wenn n < 2"
+        ],
+        correctIndex: 1,
+        explanation: "Schlechte Pivotauswahl (z. B. immer erstes Element in sortiertem Array) führt zu O(n²)."
+      },
+      {
+        question: "93. Was ist ‚Memoization‘?",
+        options: [
+          "Tatsächliche Ausführung aller rekursiven Aufrufe",
+          "Speichern von Funktionsaufrufen, um Wiederholungen zu vermeiden",
+          "Verwendung von while statt for",
+          "Ein Greedy-Verfahren"
+        ],
+        correctIndex: 1,
+        explanation: "Memoization merkt sich Ergebnisse teurer Funktionsaufrufe und gibt sie bei gleicher Eingabe zurück."
+      },
+      {
+        question: "94. Wie lautet die Komplexität von Bucket Sort im besten Fall?",
+        options: [
+          "O(n²)",
+          "O(n)",
+          "O(log n)",
+          "O(n·log n)"
+        ],
+        correctIndex: 1,
+        explanation: "Im idealen Fall, wenn Elemente gleichmäßig verteilt sind, erreicht Bucket Sort O(n)."
+      },
+      {
+        question: "95. Welche Datenstruktur wird oft für LRU-Caches verwendet?",
+        options: [
+          "Array",
+          "Hashmap + doppelt verkettete Liste",
+          "Stack",
+          "Binärer Suchbaum"
+        ],
+        correctIndex: 1,
+        explanation: "LRU-Caches kombinieren Hashmap (O(1) Lookup) mit doppelt verketteter Liste (O(1) Entfernen/Einfügen)."
+      },
+      {
+        question: "96. Wofür steht ‚DP‘ im Algorithmus-Kontext?",
+        options: [
+          "Data Protection",
+          "Dynamic Programming",
+          "Depth Partition",
+          "Direct Processing"
+        ],
+        correctIndex: 1,
+        explanation: "DP bedeutet Dynamic Programming – Wiederverwendung von Teilergebnissen zur Effizienzsteigerung."
+      },
+      {
+        question: "97. Was ist ein ‚Greedy‘-Beispielproblem?",
+        options: [
+          "Minimum Spanning Tree (Kruskal)",
+          "Bubble Sort",
+          "Fibonacci-Rekursion",
+          "Merge Sort"
+        ],
+        correctIndex: 0,
+        explanation: "Kruskal wählt jeweils die günstigste Kante (Greedy) und findet so MST in O(E·log V)."
+      },
+      {
+        question: "98. Wie testest du einen Algorithmus mit Pseudocode am schnellsten?",
+        options: [
+          "Manuelles Durchspielen mit Beispielwerten",
+          "Automatisches Deployment",
+          "Nur Log-Ausgaben",
+          "Nur Unit-Tests"
+        ],
+        correctIndex: 0,
+        explanation: "Manuelles Dry-Run am Pseudocode mit kleinen Beispieldaten zeigt Fehlermöglichkeiten schnell."
+      },
+      {
+        question: "99. Was sind Loop-Invariants?",
+        options: [
+          "Bedingungen, die vor und nach jeder Schleifeniteration gelten müssen",
+          "Vorerst ungenutzte Variablen",
+          "Schleifen ohne Abbruch",
+          "Nur für while-Loops"
+        ],
+        correctIndex: 0,
+        explanation: "Loop-Invariants sind Aussagen, die zu Beginn und Ende jeder Iteration wahr sein müssen – wichtig für Korrektheitsbeweise."
+      },
+      {
+        question: "100. Was beschreibt eine ‚Greedy-Choice Property‘?",
+        options: [
+          "Lokale Wahl führt immer zu global optimaler Lösung",
+          "Immer optimale Laufzeit",
+          "Erst rekursiv, dann iterativ",
+          "Nur bei integeren Daten"
+        ],
+        correctIndex: 0,
+        explanation: "Greedy-Choice Property bedeutet, dass lokale, unmittelbar beste Entscheidungen zu einer optimalen Gesamtlösung führen."
+      }
   ];
   

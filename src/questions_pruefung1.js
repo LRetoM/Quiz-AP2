@@ -578,6 +578,556 @@ export default [
       correctIndex: 1,
       explanation:
         "In „Lessons Learned“ hältst du fest, was im Projekt gut oder schlecht lief, um beim nächsten Mal effizienter zu sein."
-    }
+    },
+    {
+        question: "51. Was beschreibt eine nicht-funktionale Anforderung?",
+        options: [
+          "Die konkrete Umsetzung in Code",
+          "Einzelne Features, die die Software haben muss",
+          "Qualitätskriterien wie Performance oder Sicherheit",
+          "Der genaue Datenbank-Entwurf"
+        ],
+        correctIndex: 2,
+        explanation: "Nicht-funktionale Anforderungen legen fest, wie gut eine Software etwas tun soll (z. B. Antwortzeiten < 200 ms, Verschlüsselung von Nutzerdaten)."
+      },
+      {
+        question: "52. Welches UML-Diagramm eignet sich am besten zur Darstellung von Systemzuständen?",
+        options: [
+          "Klassendiagramm",
+          "Zustandsdiagramm",
+          "Use-Case-Diagramm",
+          "Sequenzdiagramm"
+        ],
+        correctIndex: 1,
+        explanation: "Zustandsdiagramme (Statecharts) zeigen, in welchen Zuständen ein Objekt sein kann und welche Ereignisse Übergänge auslösen."
+      },
+      {
+        question: "53. Bei Scrum übernimmt das Daily Meeting welche Rolle?",
+        options: [
+          "Monatliche Projektplanung",
+          "Tägliche Abstimmung über Fortschritt und Hindernisse",
+          "Review des fertigen Produkts",
+          "Festlegung der Projektkosten"
+        ],
+        correctIndex: 1,
+        explanation: "Im Daily Scrum trifft sich das Team täglich (max. 15 Min), um Fortschritte und Blocker zu klären (Inspect & Adapt)."
+      },
+      {
+        question: "54. Wofür steht das Prinzip DRY im Software-Engineering?",
+        options: [
+          "Don't Repeat Yourself",
+          "Direct Response Yield",
+          "Data Retrieval Yearly",
+          "Distributed Resource Yield"
+        ],
+        correctIndex: 0,
+        explanation: "DRY („Don’t Repeat Yourself“) fordert, dass jede Information im System nur einmal definiert sein sollte, um Wartung und Fehler zu minimieren."
+      },
+      {
+        question: "55. Welches Artefakt gehört NICHT zu Scrum?",
+        options: [
+          "Product Backlog",
+          "Sprint Backlog",
+          "Burn-Down-Chart",
+          "Gantt-Chart"
+        ],
+        correctIndex: 3,
+        explanation: "Gantt-Charts stammen aus dem klassischen Projektmanagement, in Scrum arbeitet man stattdessen mit Backlogs und Burn-Down-Charts."
+      },
+      {
+        question: "56. Was ist das Hauptziel eines Use-Case-Diagramms?",
+        options: [
+          "Klassifizierte UML-Klassenbeschreibung",
+          "Prozessbeschreibung im Swimlane-Format",
+          "Darstellung von Akteuren und ihren Hauptfunktionen",
+          "Beschreibung von Zustandsübergängen"
+        ],
+        correctIndex: 2,
+        explanation: "Use-Case-Diagramme zeigen Akteure (z. B. Nutzer, System) und welche Funktionen (Use Cases) sie ausführen können."
+      },
+      {
+        question: "57. Wie nennt man den Schritt, in dem man Anforderungen priorisiert?",
+        options: [
+          "Sprint Planning",
+          "Backlog Grooming",
+          "Coding Phase",
+          "Release Planning"
+        ],
+        correctIndex: 1,
+        explanation: "Backlog Grooming (auch Refinement) ist der kontinuierliche Prozess, um Anforderungen zu klären, zu schätzen und zu ordnen."
+      },
+      {
+        question: "58. Welches Diagramm eignet sich, um den Ablauf einer Methode in Pseudocode darzustellen?",
+        options: [
+          "Datenflussdiagramm",
+          "Sequenzdiagramm",
+          "Aktivitätsdiagramm",
+          "Komponentendiagramm"
+        ],
+        correctIndex: 2,
+        explanation: "Aktivitätsdiagramme in UML ähneln Flussdiagrammen und eignen sich gut für Pseudocode-Abläufe mit Bedingungen und Schleifen."
+      },
+      {
+        question: "59. Was beschreibt das MVC-Pattern?",
+        options: [
+          "Multi-Version-Concurrency",
+          "Model-View-Controller-Aufteilung",
+          "Memory-Validation-Cache",
+          "Module-View-Component"
+        ],
+        correctIndex: 1,
+        explanation: "MVC trennt Datenmodell (Model), Benutzeroberfläche (View) und Steuerlogik (Controller) zur klaren Verantwortungsaufteilung."
+      },
+      {
+        question: "60. Welche Rolle hat der Product Owner in Scrum?",
+        options: [
+          "Technische Leitung und Code-Reviews",
+          "Priorisierung des Backlogs und Stakeholder-Vertretung",
+          "Tägliche Moderation von Meetings",
+          "Testautomatisierung"
+        ],
+        correctIndex: 1,
+        explanation: "Der Product Owner ist für die Pflege des Product Backlogs, Priorisierung und Stakeholder-Kommunikation verantwortlich."
+      },
+      {
+        question: "61. Welcher Vorteil resultiert aus einer Drei-Schichten-Architektur?",
+        options: [
+          "Alle Schichten laufen im selben Prozessraum",
+          "Klare Trennung von Präsentation, Geschäftslogik und Datenzugriff",
+          "Keine Datenbank erforderlich",
+          "Keine Templates nötig"
+        ],
+        correctIndex: 1,
+        explanation: "Die 3-Layer-Architektur (Presentation, Business, Data) fördert Wartbarkeit und Testbarkeit durch lose Kopplung."
+      },
+      {
+        question: "62. Was bedeutet ‚Continuous Integration‘?",
+        options: [
+          "Manuelles Zusammenführen von Branches",
+          "Tägliches Deployment in Produktion",
+          "Automatisches Zusammenführen und Testen bei jedem Commit",
+          "CI/CD ist nur ein Schlagwort"
+        ],
+        correctIndex: 2,
+        explanation: "CI automatisiert Build und Tests bei jedem Code-Commit, um Integrationsprobleme frühzeitig zu finden."
+      },
+      {
+        question: "63. Wofür steht die Abkürzung ‚CRUD‘?",
+        options: [
+          "Create, Read, Update, Delete",
+          "Compile, Run, Upload, Debug",
+          "Copy, Rename, Utilize, Delete",
+          "Connect, Read, Use, Deploy"
+        ],
+        correctIndex: 0,
+        explanation: "CRUD beschreibt die vier Basisoperationen auf Daten: Anlegen, Auslesen, Aktualisieren, Löschen."
+      },
+      {
+        question: "64. Welche Aussage beschreibt ‚User Story‘ am besten?",
+        options: [
+          "Technisches Datenmodell einer Klasse",
+          "Kleine Anforderung aus Nutzersicht mit INVEST-Kriterien",
+          "Grafische Skizze der UI",
+          "Sequenzdiagramm im UML-Standard"
+        ],
+        correctIndex: 1,
+        explanation: "User Stories folgen dem Format „Als <Rolle> möchte ich <Funktion>, um <Nutzen>“ und erfüllen INVEST (Independent, Negotiable …)."
+      },
+      {
+        question: "65. Welche UML-Beziehung zeigt ‚Vererbung‘?",
+        options: [
+          "Durchgezogene Linie mit Pfeilspitze",
+          "Gestrichelte Linie mit offener Pfeilspitze",
+          "Gestrichelte Linie ohne Pfeil",
+          "Durchgezogene Linie ohne Pfeil"
+        ],
+        correctIndex: 1,
+        explanation: "Vererbung (Generalization) wird als gestrichelte Linie mit offener Pfeilspitze zum Super-Typ dargestellt."
+      },
+      {
+        question: "66. Warum verwendet man ein Entity-Relationship-Diagramm (ERD)?",
+        options: [
+          "Für UI-Prototyping",
+          "Zur Modellierung der Datenbankstruktur",
+          "Zur Ablaufsteuerung von Methoden",
+          "Für Performance-Messungen"
+        ],
+        correctIndex: 1,
+        explanation: "ERD visualisiert Entitäten mit Attributen und Beziehungen für das relationale Datenbankdesign."
+      },
+      {
+        question: "67. Welches Vorgehensmodell ist stark sequenziell und dokumentenzentriert?",
+        options: [
+          "Scrum",
+          "Extreme Programming",
+          "Wasserfallmodell",
+          "Lean Startup"
+        ],
+        correctIndex: 2,
+        explanation: "Im Wasserfallmodell werden Phasen (Analyse, Design, Implementierung…) nacheinander und dokumentenbasiert durchlaufen."
+      },
+      {
+        question: "68. Was ist ein ‚Sprint‘ in Scrum?",
+        options: [
+          "Ein Meeting für Code-Reviews",
+          "Ein fester Entwicklungszyklus (meist 1–4 Wochen)",
+          "Ein Deployment in Produktion",
+          "Ein Lastenheft"
+        ],
+        correctIndex: 1,
+        explanation: "Ein Sprint ist ein Timebox-Intervall (z. B. 2 Wochen), in dem ein genau definiertes Inkrement geliefert wird."
+      },
+      {
+        question: "69. Welche Aktivität gehört zum Requirements Engineering?",
+        options: [
+          "Code-Optimierung",
+          "Stakeholder-Interviews",
+          "Unit-Tests schreiben",
+          "Server-Deployment"
+        ],
+        correctIndex: 1,
+        explanation: "Stakeholder-Interviews dienen dazu, Anforderungen zu ermitteln und zu validieren."
+      },
+      {
+        question: "70. Wofür wird ein Mockup verwendet?",
+        options: [
+          "Datenbank-Normalisierung",
+          "Visuelle Vorschau der Benutzeroberfläche",
+          "Definition von Testfällen",
+          "Performancetests"
+        ],
+        correctIndex: 1,
+        explanation: "Mockups sind grobe Layout-Skizzen oder Wireframes, um UI/UX früh zu visualisieren und Feedback einzuholen."
+      },
+      {
+        question: "71. Was beschreibt die 3. Normalform (3NF)?",
+        options: [
+          "Keine Mehrfachwerte pro Feld",
+          "Jedes Nicht-Schlüsselattribut ist voll funktional abhängig vom Primärschlüssel",
+          "Alle Foreign Keys sind eindeutig",
+          "Tabellenstruktur ohne Join"
+        ],
+        correctIndex: 1,
+        explanation: "3NF verlangt, dass jedes Nicht-Schlüsselattribut nur vom gesamten Primärschlüssel abhängt und nicht transitiv."
+      },
+      {
+        question: "72. Welches Prinzip beschreibt ‚Fail Fast‘?",
+        options: [
+          "So spätes Fehlermelden wie möglich",
+          "Frühzeitige Überprüfung und sofortiges Abbrechen bei Fehlern",
+          "Performance-Optimierung",
+          "UI-Sicherheit"
+        ],
+        correctIndex: 1,
+        explanation: "‚Fail Fast‘ bedeutet, Fehler so früh wie möglich erkennen und den Prozess sofort abbrechen, um spätere Probleme zu vermeiden."
+      },
+      {
+        question: "73. Was versteht man unter ‚Change Control‘?",
+        options: [
+          "Überwachung von Code-Metriken",
+          "Systematische Steuerung von Änderungen am Projektumfang",
+          "Automatisches Deployment",
+          "Lastenhefterstellung"
+        ],
+        correctIndex: 1,
+        explanation: "Change Control ist der Prozess zum Prüfen, Genehmigen und Dokumentieren von Änderungen im Projekt."
+      },
+      {
+        question: "74. Welche Aufgabe hat ein Testkonzept?",
+        options: [
+          "Festlegung der Teststrategie, Testarten und Verantwortlichkeiten",
+          "Datenbankdesign",
+          "UI-Design",
+          "Stakeholdermanagement"
+        ],
+        correctIndex: 0,
+        explanation: "Ein Testkonzept beschreibt, welche Teststufen (Unit, Integration, System) und -verfahren angewendet werden."
+      },
+      {
+        question: "75. Wofür steht der Begriff ‚Agile Manifesto‘?",
+        options: [
+          "Vier Werte und zwölf Prinzipien für agile Softwareentwicklung",
+          "Ein UML-Standard",
+          "Ein Lastenheft-Format",
+          "Ein Projektmanagement-Tool"
+        ],
+        correctIndex: 0,
+        explanation: "Das Agile Manifesto definiert Werte wie Individuen über Prozesse und Prinzipien wie kontinuierliche Auslieferung."
+      },
+      {
+        question: "76. Welcher Schritt gehört zur Anforderungsanalyse?",
+        options: [
+          "Unit-Tests schreiben",
+          "Use-Case-Erstellung",
+          "Performance-Tuning",
+          "Code-Review"
+        ],
+        correctIndex: 1,
+        explanation: "Use Cases dokumentieren konkrete Interaktionen zwischen Akteuren und System und sind zentral für die Anforderungsanalyse."
+      },
+      {
+        question: "77. Was ist der Hauptzweck eines Prototyps?",
+        options: [
+          "Endgültige Implementierung im Produktivbetrieb",
+          "Frühes Feedback zu Konzepten und Usability",
+          "Automatisierte Tests",
+          "Backup und Recovery"
+        ],
+        correctIndex: 1,
+        explanation: "Prototypen (Low-/High-Fidelity) erlauben frühes Feedback von Stakeholdern zu Design und Funktionalität."
+      },
+      {
+        question: "78. Welche Aussage trifft auf Waterfall zu?",
+        options: [
+          "Hohe Flexibilität bei Änderungen während der Umsetzung",
+          "Klare Phasengrenzen mit geringem nachträglichem Änderungsbedarf",
+          "Kurze Feedbackzyklen wie in Scrum",
+          "Unabhängig von Requirements"
+        ],
+        correctIndex: 1,
+        explanation: "Im Wasserfallmodell sind die Phasen sequentiell, Änderungen nach Abschluss einer Phase sind aufwändig."
+      },
+      {
+        question: "79. Warum sind ‚Swimlanes‘ in Aktivitätsdiagrammen nützlich?",
+        options: [
+          "Zur Darstellung von parallelen Aktivitäten und Verantwortlichkeiten",
+          "Zum Datenbankdesign",
+          "Für UI-Layouts",
+          "Für Performance-Analyse"
+        ],
+        correctIndex: 0,
+        explanation: "Swimlanes unterteilen das Diagramm nach Rollen/Organisationseinheiten und machen Verantwortlichkeiten sichtbar."
+      },
+      {
+        question: "80. Was beschreibt ‚Design by Contract‘?",
+        options: [
+          "Vertragliche Verpflichtung zwischen Kunde und Entwickler",
+          "Definition von Vor­ und Nachbedingungen für Softwarekomponenten",
+          "CI/CD-Pipeline",
+          "Agiles Meeting-Format"
+        ],
+        correctIndex: 1,
+        explanation: "Design by Contract legt für Methoden Vor- und Nachbedingungen sowie Invarianten fest, um Zuverlässigkeit zu erhöhen."
+      },
+      {
+        question: "81. Welches Werkzeug hilft dir, Requirements Traceability zu sichern?",
+        options: [
+          "Versionsverwaltung (z. B. Git)",
+          "Requirements-Management-Tool (z. B. Jira, DOORS)",
+          "Pure-Plain-Text-Dateien",
+          "FTP-Server"
+        ],
+        correctIndex: 1,
+        explanation: "Traceability-Tools (Jira, DOORS) verknüpfen Anforderungen mit Implementierung und Tests, um Änderungen nachzuverfolgen."
+      },
+      {
+        question: "82. Wofür verwendet man ein Kommunikationsdiagramm (Sequenzdiagramm)?",
+        options: [
+          "Benutzeroberfläche",
+          "Datenfluss zwischen UI-Elementen",
+          "Interaktionen zwischen Objekten und Nachrichtenfluss",
+          "Datenbanknormalisierung"
+        ],
+        correctIndex: 2,
+        explanation: "Sequenzdiagramme zeigen, wie Objekte Nachrichten zeitlich austauschen und sind ideal für Interaktionsszenarien."
+      },
+      {
+        question: "83. Was beschreibt ‚Minimal Viable Product‘ (MVP)?",
+        options: [
+          "Endgültiges, vollständiges Produkt",
+          "Kleinstmögliche Version für erstes Marktfeedback",
+          "Extrem komplexer Prototyp",
+          "Testfallbeschreibung"
+        ],
+        correctIndex: 1,
+        explanation: "Ein MVP enthält nur die Kerneigenschaften, um schnell Nutzertests und Feedback zu erhalten."
+      },
+      {
+        question: "84. Warum sind Entity-Relationship-Modelle nicht Teil der UML?",
+        options: [
+          "Weil ERM nur in BPMN verwendet wird",
+          "ERM stammt aus dem Datenbankbereich und ist kein offizieller UML-Standard",
+          "Weil UML proprietär ist",
+          "Weil ERM veraltet ist"
+        ],
+        correctIndex: 1,
+        explanation: "ERM wurde für relationale Datenbanken entwickelt und ist kein offizieller Bestandteil der UML-Speziﬁkation."
+      },
+      {
+        question: "85. Welches Artefakt enthält die User Stories in Scrum?",
+        options: [
+          "Sprint Backlog",
+          "Product Backlog",
+          "Burndown Chart",
+          "Definition of Done"
+        ],
+        correctIndex: 1,
+        explanation: "Der Product Backlog ist die priorisierte Gesamtliste aller Anforderungen (User Stories) des Produkts."
+      },
+      {
+        question: "86. Wofür steht ‚ACID‘ in der Datenbanktechnik?",
+        options: [
+          "Atomicity, Consistency, Isolation, Durability",
+          "Application, Client, Internet, Data",
+          "Access, Control, Integrity, Distribution",
+          "Analyze, Code, Integrate, Deploy"
+        ],
+        correctIndex: 0,
+        explanation: "ACID-Prinzipien garantieren Transaktionssicherheit: Atomarität, Konsistenz, Isolation und Dauerhaftigkeit."
+      },
+      {
+        question: "87. Welche Farbe würdest du für normale (noch nicht beantwortete) OptionButtons wählen?",
+        options: [
+          "Hellgrün",
+          "Hellrot",
+          "Neutralgrau",
+          "Dunkelblau"
+        ],
+        correctIndex: 2,
+        explanation: "OptionButtons sollten vor Auswahl neutral (z. B. Grau oder Weiß) sein, damit keine Antwort vorab erkennbar wird."
+      },
+      {
+        question: "88. Was ist ‚Pair Programming‘?",
+        options: [
+          "Zwei Entwickler arbeiten gemeinsam an einem Computer",
+          "Zwei Personen schreiben unabhängig voneinander Code",
+          "Ein Review-Meeting im Sprint",
+          "Ein Deployment-Strategie"
+        ],
+        correctIndex: 0,
+        explanation: "Beim Pair Programming sitzt ein Fahrer (Driver) am Keyboard, ein Beobachter (Navigator) unterstützt die Planung und Code-Qualität."
+      },
+      {
+        question: "89. Welcher Schritt folgt auf Requirements Engineering?",
+        options: [
+          "Modellierung / Design",
+          "Code-Deployment",
+          "Produktionssupport",
+          "Abnahme"
+        ],
+        correctIndex: 0,
+        explanation: "Nach der Ermittlung der Anforderungen beginnt die Modellierung (z. B. UML-Diagramme) und das Lösungsdesign."
+      },
+      {
+        question: "90. Was beschreibt ‚Spike‘ im agilen Kontext?",
+        options: [
+          "Eine kurze Untersuchung oder Prototyp-Aufgabe zur Klärung von Unsicherheiten",
+          "Ein Bugfix",
+          "Eine Art von UML-Diagramm",
+          "Ein Performance-Test"
+        ],
+        correctIndex: 0,
+        explanation: "Ein Spike ist ein zeitlich begrenzter Prototyp oder Experiment, um technische oder fachliche Fragen zu klären."
+      },
+      {
+        question: "91. Welcher Vorteil ergibt sich aus Code-Reviews?",
+        options: [
+          "Schlechtere Codequalität",
+          "Erhöhte Anzahl von Bugs im Code",
+          "Qualitätsverbesserung und Wissensaustausch",
+          "Längere Delivery-Times ohne Benefit"
+        ],
+        correctIndex: 2,
+        explanation: "Code-Reviews erhöhen Code-Qualität, finden Fehler früh und fördern Team-Wissen."
+      },
+      {
+        question: "92. Warum nutzt man ‚Mock Objects‘ im Testing?",
+        options: [
+          "Um reale Datenbankzugriffe einzusetzen",
+          "Um Abhängigkeiten zu simulieren und isoliert zu testen",
+          "Für UI-Tests",
+          "Für Performance-Benchmarks"
+        ],
+        correctIndex: 1,
+        explanation: "Mock Objects ersetzen externe Komponenten (DB, Webservices) im Unit-Test, um isolierte Testumgebungen zu schaffen."
+      },
+      {
+        question: "93. Was ist bei Barrierefreiheit (Accessibility) wichtig?",
+        options: [
+          "Nur Farben zu verwenden",
+          "Klare Kontraste, Tastaturbedienbarkeit und Screenreader-Support",
+          "Nur Bilder zu zeigen",
+          "Keine Texte zu verwenden"
+        ],
+        correctIndex: 1,
+        explanation: "Für Accessibility sind Farbkontraste, Tastaturnutzung, ARIA-Labels und Screenreader-Kompatibilität essenziell."
+      },
+      {
+        question: "94. Welche Rolle hat die ‚Definition of Done‘?",
+        options: [
+          "Sie definiert, wann eine Anforderung als fertig gilt",
+          "Sie legt Performanceziele fest",
+          "Sie beschreibt UI-Mockups",
+          "Sie spielt in Scrum keine Rolle"
+        ],
+        correctIndex: 0,
+        explanation: "Die DoD listet Kriterien (z. B. keine offenen Bugs, Testabdeckung) für fertig abgenommene Product-Inkremente."
+      },
+      {
+        question: "95. Was ist eine ‚Design-Review‘?",
+        options: [
+          "Ein Review von UI-Farben",
+          "Eine fachliche und technische Überprüfung des Software-Designs",
+          "Ein Testkonzept",
+          "Ein Deployment-Log"
+        ],
+        correctIndex: 1,
+        explanation: "Design-Reviews prüfen Architekturentscheidungen, Patterns und technische Konzepte auf Machbarkeit und Qualität."
+      },
+      {
+        question: "96. Warum ist ‚Loose Coupling‘ wünschenswert?",
+        options: [
+          "Damit Module stark voneinander abhängen",
+          "Für flexible, wartbare Komponenten mit geringer Abhängigkeit",
+          "Für monolithische Systeme",
+          "Für unstrukturierte Codebasen"
+        ],
+        correctIndex: 1,
+        explanation: "Loose Coupling minimiert Abhängigkeiten zwischen Modulen und erleichtert Änderungen und Tests."
+      },
+      {
+        question: "97. Welche Aussage trifft auf ‚Refactoring‘ zu?",
+        options: [
+          "Es ändert die externe Funktionalität der Software",
+          "Es verbessert Code-Struktur ohne Änderung des Verhaltens",
+          "Es fügt neue Features hinzu",
+          "Es entfernt alle Tests"
+        ],
+        correctIndex: 1,
+        explanation: "Refactoring reorganisiert und optimiert den Code intern, ohne dass sich das externe Verhalten ändert."
+      },
+      {
+        question: "98. Wie unterscheidet sich ‚Sprint Review‘ von ‚Sprint Retrospective‘?",
+        options: [
+          "Beides sind Code-Reviews",
+          "Review zeigt das Inkrement den Stakeholdern, Retrospective bespricht Team-Prozess",
+          "Sprint Review schreibt Tests, Retrospective deployt",
+          "Kein Unterschied"
+        ],
+        correctIndex: 1,
+        explanation: "Im Sprint Review wird das Produktinkrement präsentiert, in der Retrospektive werden Teamprozesse reflektiert."
+      },
+      {
+        question: "99. Wofür verwendet man ‚Portfolio Backlog‘ in SAFe?",
+        options: [
+          "Zur Koordination mehrerer Teams und Epics",
+          "Für UI-Prototyping",
+          "Für Datenbank-Migrationsszenarien",
+          "Für Scrum Master Aufgaben"
+        ],
+        correctIndex: 0,
+        explanation: "Im Scaled Agile Framework (SAFe) koordiniert das Portfolio Backlog Epics und strategische Initiativen über mehrere Teams."
+      },
+      {
+        question: "100. Was ist der Unterschied zwischen ‚Verification‘ und ‚Validation‘?",
+        options: [
+          "Verification prüft, ob wir das Produkt richtig gebaut haben; Validation, ob wir das richtige Produkt gebaut haben",
+          "Verification ist Testing, Validation ist Deployment",
+          "Kein Unterschied",
+          "Beides sind Agile Meetings"
+        ],
+        correctIndex: 0,
+        explanation: "Verification = ‚Bauen wir’s richtig?‘ (technisch), Validation = ‚Bauen wir’s Richtige?‘ (anforderungsorientiert)."
+      }
   ];
   

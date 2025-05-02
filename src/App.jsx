@@ -81,7 +81,8 @@ const styles = {
     transform: 'rotateY(180deg)'
   },
   cardFront: {
-    backfaceVisibility: 'hidden'
+    backfaceVisibility: 'hidden',
+    zIndex: 1
   },
   cardBack: {
     backfaceVisibility: 'hidden',
@@ -90,7 +91,8 @@ const styles = {
     left: 0,
     width: '100%',
     height: '100%',
-    transform: 'rotateY(180deg)'
+    transform: 'rotateY(180deg)',
+    zIndex: 0
   },
   question: { fontSize: '1.25rem', marginBottom: '1rem' },
   optionsGrid: {
@@ -220,16 +222,19 @@ export default function App() {
 
   // Navigation
   const next = () => {
-    setFlipped(false);     // <<< wichtig: zuerst zurücksetzen!
-    setSelected(null);     // <<< vorherige Auswahl zurücksetzen
-    if (idx < queue.length - 1) {
-      setTimeout(() => {
+    setFlipped(false); // zuerst zurückdrehen
+    setSelected(null);
+  
+    setTimeout(() => {
+      if (idx < queue.length - 1) {
         setIdx(i => i + 1);
-      }, 10); // kleiner Delay, damit Flip zurückgeht
-    } else {
-      setStage('result');
-    }
+      } else {
+        setStage('result');
+      }
+      setAnsweredQuestion(null);
+    }, 600); // 600ms = Animationsdauer wie in styles.cardInner.transition
   };
+  
   
   const prev = () => {
     if (idx > 0) {
