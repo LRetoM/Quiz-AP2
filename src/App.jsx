@@ -35,7 +35,8 @@ const styles = {
     width: '100%',
     maxWidth: '600px',
     padding: '1.5rem',
-    boxSizing: 'border-box'
+    boxSizing: 'border-box',
+    position: 'relative'
   },
   title: { margin: 0, marginBottom: '1rem', fontSize: '1.75rem', textAlign: 'center' },
   menuButton: {
@@ -63,25 +64,6 @@ const styles = {
     background: '#00796b',
     transition: 'width .4s ease'
   }),
-  question: { fontSize: '1.25rem', marginBottom: '1rem' },
-  optionsGrid: {
-    display: 'grid',
-    gridTemplateColumns: '1fr',
-    gridGap: '0.75rem'
-  },
-  nav: { display: 'flex', justifyContent: 'space-between', marginTop: '1rem' },
-  navButton: {
-    padding: '0.75rem 1.5rem',
-    border: 'none',
-    borderRadius: '6px',
-    background: '#8e24aa',
-    color: '#fff',
-    cursor: 'pointer',
-    fontSize: '1rem'
-  },
-  result: { textAlign: 'center' },
-
-  // — neu für Flip & Score —
   scoreDisplay: {
     fontSize: '1rem',
     marginBottom: '0.5rem',
@@ -109,10 +91,37 @@ const styles = {
     width: '100%',
     height: '100%',
     transform: 'rotateY(180deg)'
-  }
+  },
+  question: { fontSize: '1.25rem', marginBottom: '1rem' },
+  optionsGrid: {
+    display: 'grid',
+    gridTemplateColumns: '1fr',
+    gridGap: '0.75rem'
+  },
+  nav: { display: 'flex', justifyContent: 'space-between', marginTop: '1rem' },
+  navButton: {
+    padding: '0.75rem 1.5rem',
+    border: 'none',
+    borderRadius: '6px',
+    background: '#8e24aa',
+    color: '#fff',
+    cursor: 'pointer',
+    fontSize: '1rem'
+  },
+  result: { textAlign: 'center' }
 };
 
-// —————— OptionButton Component ——————
+// — Shuffle helper — 
+const shuffle = arr => {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+};
+
+// — OptionButton Component — 
 function OptionButton({ children, onClick, disabled, state }) {
   const base = {
     padding: '1rem',
@@ -121,7 +130,7 @@ function OptionButton({ children, onClick, disabled, state }) {
     fontSize: '1rem',
     cursor: disabled ? 'default' : 'pointer',
     userSelect: 'none',
-    transition: 'background .3s, border-color .3s, transform .1s',
+    transition: 'background .3s, border-color .3s',
     textAlign: 'left',
     background: '#fafafa'
   };
@@ -142,7 +151,7 @@ function OptionButton({ children, onClick, disabled, state }) {
   );
 }
 
-// —————— Main App ——————
+// — Main App — 
 export default function App() {
   const [stage, setStage] = useState('menu'); // menu | quiz | result
   const [examKey, setExamKey] = useState('pruefung1');
@@ -152,6 +161,8 @@ export default function App() {
   const [highscores, setHighscores] = useState({});
   const [selected, setSelected] = useState(null);
   const [flipped, setFlipped] = useState(false);
+  // **NEU**: speichert die gerade beantwortete Frage
+  const [answeredQuestion, setAnsweredQuestion] = useState(null);
 
   // Load Highscores
   useEffect(() => {
@@ -171,27 +182,28 @@ export default function App() {
     }
   }, [stage]);
 
-  // Shuffle helper
-  const shuffle = arr => {
-    const a = arr.slice();
-    for (let i = a.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [a[i], a[j]] = [a[j], a[i]];
-    }
-    return a;
-  };
-
-  // Start Quiz
+  // Start Quiz: auch Antworten mischen
   const startQuiz = key => {
     setExamKey(key);
-    setQueue(shuffle(questionPools[key]));
+    const list = shuffle(questionPools[key]).map(q => {
+      const opts = shuffle(q.options);
+      const correct = q.options[q.correctIndex];
+      return {
+        ...q,
+        options: opts,
+        correctIndex: opts.indexOf(correct)
+      };
+    });
+    setQueue(list);
     setIdx(0);
     setScore(0);
     setSelected(null);
     setFlipped(false);
+    setAnsweredQuestion(null); // **Clear**
     setStage('quiz');
   };
 
+  // Auswerten
   const handleAnswer = correct => {
     if (correct) setScore(s => s + 1);
     else {
@@ -206,11 +218,13 @@ export default function App() {
     }
   };
 
+  // Navigation
   const next = () => {
     if (idx < queue.length - 1) {
       setIdx(i => i + 1);
       setSelected(null);
       setFlipped(false);
+      setAnsweredQuestion(null); // **Clear**
     } else {
       setStage('result');
     }
@@ -220,10 +234,12 @@ export default function App() {
       setIdx(i => i - 1);
       setSelected(null);
       setFlipped(false);
+      setAnsweredQuestion(null); // **Clear**
     }
   };
 
-  // —————— UI ——————
+  const current = queue[idx] || {};
+
   return (
     <div style={styles.container}>
       {/* — MENU — */}
@@ -245,16 +261,11 @@ export default function App() {
       {/* — QUIZ — */}
       {stage === 'quiz' && (
         <div style={styles.quizWrapper}>
-          {/* Fortschrittsbalken */}
           <div style={styles.progressBarContainer}>
-            <div
-              style={styles.progressBar(((idx + 1) / queue.length) * 100)}
-            />
+            <div style={styles.progressBar(((idx + 1) / queue.length) * 100)} />
           </div>
-          {/* Score */}
           <div style={styles.scoreDisplay}>Score: {score}</div>
 
-          {/* Karte mit Flip */}
           <div style={styles.cardWrapper}>
             <div
               style={{
@@ -264,13 +275,17 @@ export default function App() {
             >
               {/* Vorderseite */}
               <div style={{ ...styles.card, ...styles.cardFront }}>
-                <div style={styles.question}>{queue[idx].question}</div>
+                <div style={styles.question}>{current.question}</div>
                 <div style={styles.optionsGrid}>
-                  {queue[idx].options.map((opt, i) => {
-                    const isCorrect = i === queue[idx].correctIndex;
+                  {current.options.map((opt, i) => {
                     let state = 'default';
                     if (selected !== null) {
-                      state = isCorrect ? 'correct' : i === selected ? 'wrong' : 'default';
+                      // nur den angeklickten Button einfärben
+                      if (i === selected && selected === current.correctIndex) {
+                        state = 'correct';
+                      } else if (i === selected && selected !== current.correctIndex) {
+                        state = 'wrong';
+                      }
                     }
                     return (
                       <OptionButton
@@ -278,7 +293,8 @@ export default function App() {
                         onClick={() => {
                           if (selected === null) {
                             setSelected(i);
-                            handleAnswer(isCorrect);
+                            setAnsweredQuestion(current); // **speichere Frage**
+                            handleAnswer(i === current.correctIndex);
                             setFlipped(true);
                           }
                         }}
@@ -291,20 +307,10 @@ export default function App() {
                   })}
                 </div>
               </div>
-
               {/* Rückseite */}
               <div style={{ ...styles.card, ...styles.cardBack }}>
                 <strong>Erklärung:</strong>
-                <p>{queue[idx].explanation}</p>
-                {queue[idx].imageUrl && (
-                  <div style={{ textAlign: 'center', marginTop: '1rem' }}>
-                    <img
-                      src={queue[idx].imageUrl}
-                      alt="Beispiel"
-                      style={{ maxWidth: '100%', borderRadius: '4px' }}
-                    />
-                  </div>
-                )}
+                <p>{answeredQuestion?.explanation}</p>
               </div>
             </div>
           </div>
